@@ -8,6 +8,7 @@ import {
   CUSTOM_REALM,
 } from "./requestSettings";
 
+// function needed to convert javascript object to x-www-form-urlencoded readable form
 const xformurlencoder = (bodyFields) => {
   let encodedStr = "";
 
@@ -25,15 +26,18 @@ export default {
 
   // LOGIN USER AND GET TOKENS
   loginUser: async (username, password) => {
+    // information required to login in user
     let loginInfo = {
-      username: username,
-      password: password,
-      grant_type: PASSWORD_GRANT_TYPE,
-      client_id: CUSTOM_CLIENT_ID,
+      'username': username,
+      'password': password,
+      'grant_type': PASSWORD_GRANT_TYPE,
+      'client_id': CUSTOM_CLIENT_ID,
     };
 
+    // convert login information to urlencoded form
     const body = xformurlencoder(loginInfo);
 
+    // post request to keycloak server
     return await fetch(
       BASE_URL + "/auth/realms/" + CUSTOM_REALM +"/protocol/openid-connect/token",
       {
@@ -56,6 +60,7 @@ export default {
 
   // GET USER INFORMATION
   getUser: async (token) => {
+    // get request to keycloak server for user info
     return await fetch(
       BASE_URL +
         "/auth/realms/" +
@@ -84,14 +89,17 @@ export default {
 
   // GET THE ADMIN TOKEN
   getAdminToken: async () => {
+    // required information to get an admin token from keycloak server
     const adminTokenInfo = {
       "client_secret": CLIENT_SECRET,
       "grant_type": CLIENT_CREDENTIAL_GRANT_TYPE,
       "client_id": ADMIN_CLIENT_ID,
     };
 
+    // convert adminToken info to a urlencoded form 
     const body = xformurlencoder(adminTokenInfo);
 
+    // request to keycloak server
     return await fetch(
       BASE_URL +
         "/auth/realms/" +
@@ -119,7 +127,8 @@ export default {
 
 
   // REGISTER A NEW USER
-  registerUser: async (firstName, lastName, email, username, password, token) => {
+  registerUser: async ({firstName, lastName, email, username, password, token}) => {
+    // information needed to register a new user on a keycloak server
     const body = {
       firstName: firstName,
       lastName: lastName,
@@ -135,6 +144,7 @@ export default {
       ],
     };
 
+    // request to keycloak server
     return await fetch(
       BASE_URL + "/auth/admin/realms/" + CUSTOM_REALM + "/users",
       {
@@ -158,6 +168,7 @@ export default {
 
   // LOGOUT A USER SESSION
   logoutUser: async (refreshToken) => {
+    // necessary setting information in order to logout
     const logoutInfo = {
       client_id: CUSTOM_CLIENT_ID,
       refresh_token: refreshToken,
@@ -165,6 +176,7 @@ export default {
 
     const body = xformurlencoder(logoutInfo);
 
+    // request to keycloak server
     return await  fetch(
       BASE_URL + "/auth/realms/" + CUSTOM_REALM +"/protocol/openid-connect/logout",
       {
@@ -184,12 +196,14 @@ export default {
 
   // UPDATE USER PASSWORD
   updatePassword: async (newPassword, userId) => {
+    // new password settings
     const body = {
       temporary: false,
       value: newPassword,
       type: "password",
     };
 
+    // request to keycloak server
     return await fetch(
       BASE_URL + `/auth/admin/realms/${CUSTOM_REALM}/users/${userId}/reset-password`,
       {
