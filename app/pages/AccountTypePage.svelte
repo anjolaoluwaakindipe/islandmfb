@@ -30,7 +30,7 @@
                 </formattedString>
             </label>
 
-
+            <!-- Options for Account Types -->
             <OptionButton optionName="Savings Account"/>
             <OptionButton optionName="Current Account"/>
         </flexboxLayout>
@@ -41,6 +41,8 @@
 <style>
     .text-header{
         font-size: 30;
+        margin-top: 10;
+        margin-bottom: 0;
     }
     .container{
         height: 100%;
@@ -49,6 +51,6 @@
     }
     .text-subinfo{
         font-size: 17;
-        margin-bottom: 20
+        margin-bottom: 30;
     }
 </style>

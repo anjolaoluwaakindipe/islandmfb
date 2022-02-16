@@ -50,7 +50,10 @@ The imported CSS rules must precede all other types of rules.
   color: #333333;
   font-family: "Poppins Light", "Poppins-Light";
 }
-
+.text-mid{
+  color: #333333;
+  font-family: "Poppins Regular", "Poppins-Regular";
+}
 .btn {
   background-color: #bc4b52;
   color: #fff;
@@ -73,4 +76,4 @@ The imported CSS rules must precede all other types of rules.
         height: auto;
         width:30px;
 
-    }
+}

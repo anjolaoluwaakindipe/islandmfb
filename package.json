@@ -4,9 +4,11 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@nativescript-community/ui-svg": "^0.0.8",
     "@nativescript/core": "~8.1.1",
     "@nativescript/theme": "~3.0.1",
-    "@teammaestro/nativescript-svg": "^1.0.1",
+    "@nstudio/nativescript-checkbox": "^2.0.4",
+    "currency.js": "^2.0.4",
     "nativescript-tailwind": "^2.0.1",
     "svelte-native": "~1.0.0"
   },
