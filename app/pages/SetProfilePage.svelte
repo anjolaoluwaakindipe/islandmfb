@@ -26,7 +26,7 @@
         
         <flexboxLayout flexDirection="column" class="container">
             <!-- scrollabel area -->
-            <scrollView orientation="vertical">
+            <scrollView orientation="vertical" class="content-container" scrollBarIndicatorVisible={false} >
                 <flexboxLayout flexDirection="column">
                     <!-- Header Text -->
                     <label class="text text-header" textWrap=true>
@@ -50,10 +50,11 @@
                     </flexboxLayout>
                 </flexboxLayout>
             </scrollView>
-            
-            <!-- Button that should save textField data and navigate user to the VerificationPage -->
-            <button class="btn text-bold custom-button" text="Set up Profile" on:tap={navigation}/>
-            
+             
+            <flexboxLayout class="button-container" alignItems="center">
+                <!-- Button that should save textField data and navigate user to the VerificationPage -->
+                <button class="btn text-bold custom-button" text="Set up Profile" on:tap={navigation}/>
+            </flexboxLayout>
         </flexboxLayout>
     </flexboxLayout>
 </page>
@@ -73,5 +74,11 @@
     }
     .custom-button{
         margin: 0 ;
+    }
+    .content-container{
+        height: 80%;
+    }
+    .button-container{
+        height: 20%;
     }
 </style>

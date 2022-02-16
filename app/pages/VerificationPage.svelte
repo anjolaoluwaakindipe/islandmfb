@@ -10,7 +10,13 @@
 
     // Button handler
     const verifyPinHandler = () =>{
-        navigate({page: SuccessPage})
+        navigate({
+            page: SuccessPage, 
+            props:{
+                subInfoText: "You have successfully signed up your account in our app and can start using",
+                buttonText: "Start using"
+            }}
+        );
     }
 </script>
 
@@ -23,7 +29,7 @@
         </Nav>
 
         <flexboxLayout flexDirection="column" class="container">
-            <flexboxLayout flexDirection="column" class="content-container">
+            <flexboxLayout flexDirection="column" class="content-container" >
                 <!-- Header Text -->
                 <label class="text text-header">
                     <formattedString>
@@ -49,7 +55,7 @@
             </flexboxLayout>
 
             <!-- Button to save verification pin and navigate to the success page -->
-            <flexboxLayout class="button-container">
+            <flexboxLayout class="button-container" alignItems="center">
                 <button text="Continue" class="btn text-bold custom-button" on:tap={verifyPinHandler}/>
             </flexboxLayout>
         </flexboxLayout>
@@ -78,11 +84,11 @@
         margin-top: 20;
     }
     .button-container{
-        height: 100%;
+        height: 20%;
         align-items: flex-end;
-        padding-bottom: 55;
+
     }
     .content-container{
-        height: 100%;
+        height: 80%;
     }
 </style>
