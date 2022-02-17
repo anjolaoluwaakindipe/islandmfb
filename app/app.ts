@@ -7,6 +7,8 @@ purpose of the file is to pass control to the app’s first page.
 import { svelteNativeNoFrame } from 'svelte-native'
 import App from './App.svelte';
 import { registerNativeViewElement } from "svelte-native/dom";
+import {install} from '@nativescript-community/ui-drawer';
+import DrawerElement from "@nativescript-community/ui-drawer/svelte";
 
 registerNativeViewElement(
   "checkBox",
@@ -17,6 +19,11 @@ registerNativeViewElement(
   "svgView",
   () => require("@nativescript-community/ui-svg").SVGView
 );
+
+install();
+DrawerElement.register();
+
+
 
 
 svelteNativeNoFrame(App, {})
