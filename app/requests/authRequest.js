@@ -127,7 +127,7 @@ export default {
 
 
   // REGISTER A NEW USER
-  registerUser: async ({firstName, lastName, email, username, password, token}) => {
+  registerUser: async ({firstName, lastName, email, username, password, adminToken}) => {
     // information needed to register a new user on a keycloak server
     const body = {
       firstName: firstName,
@@ -148,7 +148,7 @@ export default {
     return await fetch(
       BASE_URL + "/auth/admin/realms/" + CUSTOM_REALM + "/users",
       {
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer " + token },
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer " + adminToken },
         method: "POST",
         body: JSON.stringify(body),
       }
@@ -167,7 +167,7 @@ export default {
 
 
   // LOGOUT A USER SESSION
-  logoutUser: async (refreshToken) => {
+  logoutUser: async ({refreshToken}) => {
     // necessary setting information in order to logout
     const logoutInfo = {
       client_id: CUSTOM_CLIENT_ID,
@@ -195,7 +195,7 @@ export default {
 
 
   // UPDATE USER PASSWORD
-  updatePassword: async (newPassword, userId) => {
+  updatePassword: async ({newPassword, userId, adminToken} ) => {
     // new password settings
     const body = {
       temporary: false,
@@ -211,6 +211,7 @@ export default {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": "Bearer " + adminToken
         },
       }
     )

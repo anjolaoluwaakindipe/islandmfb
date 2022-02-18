@@ -1,5 +1,5 @@
 <frame>
-    <HomePage/>
+    <GetStartedPage/>
 </frame>
 
 <script>
@@ -12,5 +12,4 @@
     import AccountServicesPage from './pages/AccountServicesPage.svelte';
     import {authStore} from './store/authStore';
 
-    console.log($authStore);
 </script>

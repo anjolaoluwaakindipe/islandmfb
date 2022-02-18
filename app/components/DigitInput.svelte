@@ -1,12 +1,17 @@
 <script>
-import { tick } from "svelte";
+import { onMount, tick } from "svelte";
 
 
 
-    let firstDigit ;
-    let secondDigit ;
-    let thirdDigit;
-    let fourthDigit ;
+    let firstDigitValue ;
+    let secondDigitValue;
+    let thirdDigitValue;
+    let fourthDigitValue;
+
+    let firstDigitField;
+    let secondDigitField;
+    let thirdDigitField;
+    let fourthDigitField;
 
     let textChange = async (args, inputNumber, inputNumberState) =>{
         
@@ -20,25 +25,29 @@ import { tick } from "svelte";
         args.object.text = ""
     }
 
-    $: console.log(firstDigit);
+    onMount(()=>{
+        firstDigitField.object.focus();
+    })
+
+    $: console.log(firstDigitValue);
 
     export let pin;
 
-    $: pin = firstDigit + secondDigit+ thirdDigit+ fourthDigit;
+    $: pin = firstDigitValue + secondDigitValue+ thirdDigitValue+ fourthDigitValue;
 </script>
 
 <flexboxLayout class="container" alignItems="center"  >
     <flexboxLayout  class="input-container" alignItems="center">
-        <textField id="digit1" keyboardType="number" maxLength="{1}" on:focus={onFocusHandler} class="text" hint="*" bind:text="{firstDigit}" on:textChange={(args)=>textChange(args,1)}/>
+        <textField bind:this={firstDigitField} id="digit1" keyboardType="number" maxLength="{1}" on:focus={onFocusHandler} class="text" hint="*" bind:text="{firstDigitValue}" on:textChange={(args)=>textChange(args,1)}/>
     </flexboxLayout>
     <flexboxLayout  class="input-container" alignItems="center" >
-        <textField id="digit2"  keyboardType="number" maxLength="{1}" class="text" hint="*" bind:text={secondDigit}/>
+        <textField bind:this={secondDigitField} id="digit2"  keyboardType="number" maxLength="{1}" class="text" hint="*" bind:text={secondDigitValue}/>
     </flexboxLayout>
     <flexboxLayout  class="input-container" alignItems="center" >
-        <textField id="digit3"  keyboardType="number" maxLength="{1}" class="text" hint="*"  bind:text={thirdDigit} />
+        <textField bind:this={thirdDigitField} id="digit3"  keyboardType="number" maxLength="{1}" class="text" hint="*"  bind:text={thirdDigitValue} />
     </flexboxLayout>
     <flexboxLayout class="input-container" alignItems="center">
-        <textField id="digit4" keyboardType="number" maxLength="{1}" class="text" hint="*" bind:text={fourthDigit}/>
+        <textField bind:this={fourthDigitField} id="digit4" keyboardType="number" maxLength="{1}" class="text" hint="*" bind:text={fourthDigitValue}/>
     </flexboxLayout>
 </flexboxLayout>
 
