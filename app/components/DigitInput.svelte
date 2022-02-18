@@ -25,9 +25,9 @@ import { onMount, tick } from "svelte";
         args.object.text = ""
     }
 
-    onMount(()=>{
-        firstDigitField.object.focus();
-    })
+    // onMount(()=>{
+    //     firstDigitField.object.focus();
+    // })
 
     $: console.log(firstDigitValue);
 
