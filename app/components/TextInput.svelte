@@ -5,9 +5,10 @@ import { FlexboxLayout } from "@nativescript/core";
     export let label;
     export let textFieldValue;
     export let hint;
+    export let className;
 </script>
 
-<flexboxLayout flexDirection="column" class="container">
+<flexboxLayout flexDirection="column" class={"container " +className}>
     <label class="text text-subinfo" textWrap=true>
         <formattedString>
                 <span bind:text={label} />
@@ -23,6 +24,7 @@ import { FlexboxLayout } from "@nativescript/core";
     .container{
         width: 100;
         font-size: 17;
+        margin-bottom: 20;
     }
     textField{
         width: 100%;

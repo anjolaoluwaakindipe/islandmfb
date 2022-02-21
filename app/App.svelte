@@ -1,5 +1,5 @@
 <frame>
-    <GetStartedPage/>
+    <LoginPage/>
 </frame>
 
 <script>
@@ -11,5 +11,6 @@
     import HomePage from './pages/HomePage.svelte';
     import AccountServicesPage from './pages/AccountServicesPage.svelte';
     import {authStore} from './store/authStore';
+    import LoginPage from './pages/LoginPage.svelte';
 
 </script>

@@ -6,7 +6,7 @@ const authStoreHandle = () => {
 
     return ({
         subscribe,
-        setToken: (tokenInfo)=>set({tokenInfo: tokenInfo}),
+        setToken: (tokenInfo)=>{set({tokenInfo: tokenInfo}); return Promise.resolve()},
         clearToken: ()=> set(undefined),
     })
 }
